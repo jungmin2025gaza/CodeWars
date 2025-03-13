@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ const app = express();
 
 connectDB();
 app.set("view engine", "ejs");
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static("public"));
 app.use("/", index);
