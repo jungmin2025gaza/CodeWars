@@ -1,13 +1,15 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const app = express();
 
 dotenv.config();
 
 const index = require("./routes/index");
 const problems = require("./routes/problems");
 const login = require("./routes/login");
+const connectDB = require("./config/db");
+const app = express();
 
+connectDB();
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
@@ -23,7 +25,7 @@ app.use(function (req, res, next) {
 
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.error = process.env.NODE_ENV === "development" ? err : {};
 
   res.status(err.status || 500);
   res.render("error");
