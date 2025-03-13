@@ -36,28 +36,28 @@ exports.judge = async (req, res, next) => {
       return next(error);
     }
 
-    let runningUserCode;
+    let solution;
     try {
-      runningUserCode = Function(userCode)();
+      solution = new Function(userCode)();
     } catch (err) {
-      const error = new Error("user code execution failed");
+      const error = new Error("Oops...code given, execution failed");
       return next(error);
     }
 
     for (const test of problem.tests) {
       const testCode = test.code;
-      const solution = test.solution;
+      const solutionForCode = test.solution;
+
       let userSolution;
       try {
         userSolution = eval(testCode);
-        console.log("userSOlution", userSolution);
       } catch (err) {
-        const error = new Error(`${testCode} execution failed: ${err.message}`);
-        return next(error);
+        const errorMessg = `실행할 수 없는 코드를 작성하셨네요...>_< 다시 시도하세요!`;
+        return res.render("failure", { error: err, message: errorMessg });
       }
 
-      const errorMessg = `${testCode} 테스트에서 ${solution}를 결과로 가져야 하는데 ${userSolution}이 출력되었네요...!`;
-      if (userSolution !== solution) {
+      const errorMessg = `${testCode} 테스트에서 ${solutionForCode}를 결과로 가져야 하는데 ${userSolution}이 출력되었네요...!`;
+      if (userSolution !== solutionForCode) {
         return res.render("failure", { error: null, message: errorMessg });
       }
     }
