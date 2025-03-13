@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
-  res.render("index");
-});
+const problemsController = require("./controllers/problems.controller");
+
+router.get("/", problemsController.getAllProblems);
+
+router.route("/:id")
+  .get(problemsController.getProblemById)
+  .post(problemsController.judge);
 
 module.exports = router;
