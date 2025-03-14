@@ -1,0 +1,12 @@
+{"level":"info","message":"This is an info log"}
+{"level":"error","message":"This is an error log"}
+{"level":"info","message":"This is an info log"}
+{"level":"error","message":"This is an error log"}
+{"level":"info","message":"Server is currently running on http://localhost:3000"}
+{"level":"info","message":"GET /"}
+{"level":"error","message":"500 - C:\\Program Files\\node-express\\codewars\\views\\index.ejs:13\n    11|   <h1>Codewars</h1>\r\n    12|   <h2>코딩 전쟁이 일어난다. 모든 대원들, 전투 준비!</h2>\r\n >> 13|   <% if(problems) { %>\r\n    14|     <ul class=\"problems\">\r\n    15|       <% problems.forEach(problem=> { %>\r\n    16|         <li>\r\n\nproblems is not defined - / - GET - ::1"}
+{"level":"info","message":"GET /favicon.ico"}
+{"level":"error","message":"404 - not found - /favicon.ico - GET - ::1"}
+{"level":"info","message":"GET /problems"}
+{"level":"info","message":"GET /favicon.ico"}
+{"level":"error","message":"404 - not found - /favicon.ico - GET - ::1"}
