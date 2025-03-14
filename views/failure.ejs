@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>failure</title>
-</head>
-<body>
-  <%if(error) {%>
-    <h1>...ᡣ • . • 𐭩 ♡ 코드에 에러가 있어요!</h1>
-    <h4>다음과 같은 에러가 있으니 참고해 수정하시길...</h4>
-    <p>
-      <%=error %>
-    </p>
+<%if (error) { %>
+  <h1>...ᡣ • . • 𐭩 ♡ 코드에 에러가 있어요!</h1>
+  <h4>다음과 같은 에러가 있으니 참고해 수정하시길...</h4>
+  <p><%=error %></p>
+<%} %>
+
+<%if (message) { %>
+  <%if (message && !error) { %>
+    <h1>테스트 케이스를 통과하지 못했네요... ϲ( ´•ϲ̲̃ ̲̃•` )ɔ</h1>
   <%} %>
-  <%if(message) {%>
-    <%if(message && !error) {%>
-      <h1>테스트 케이스를 통과하지 못했네요... ϲ( ´•ϲ̲̃ ̲̃•` )ɔ</h1>
-    <%} %>
-    <h4>
-      ٩(〃._.〃)ว
-      <%=message%>
-      ٩(〃._.〃)ว
-    </h4>
-  <%} %>
-</body>
-</html>
+  <h4>٩(〃._.〃)ว<%=message%>٩(〃._.〃)ว</h4>
+<%} %>

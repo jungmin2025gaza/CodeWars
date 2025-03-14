@@ -1,0 +1,23 @@
+<h1>Codewars</h1>
+<h2>코딩 전쟁이 일어난다. 모든 대원들, 전투 준비!</h2>
+<% if(problems) { %>
+  <ul class="problems">
+    <% problems.forEach(problem => { %>
+      <li>
+        <a href="/problems/<%= problem._id %>">
+          <div><%=problem.title%></div>
+        </a>
+        <div>정답자: <%=problem.completed_users%>명</div>
+        <div>난이도: Level <%=problem.difficulty_level%></div>
+        <% if(id) { %>
+          <form method="post" action="/problems/<%= problem._id %>">
+            <div><%=problem.description %></div>
+            <label for="code">Your code</label>
+            <textarea id="code" name="code">return function x(arg) { }</textarea>
+            <input type="submit" value="submit" id="submitBtn" />
+          </form>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
